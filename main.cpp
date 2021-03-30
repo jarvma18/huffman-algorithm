@@ -1,6 +1,7 @@
 #include <string.h> 
 #include <iostream> 
 #include <fstream>
+#include "compress.h"
 using namespace std;
 
 int main() {
@@ -12,11 +13,11 @@ int main() {
     cout << "Select file compressing (1) or file decompressing (2): ";
     getline(cin, action);
     if (action == "1") {
-      cout << "You selected 'file compressing (1)', are you sure (y/n)? ";
+      cout << "You selected 'file compressing (1)', are you sure? (y/n) ";
         getline(cin, confirmSelection);
     }
     else if (action == "2") {
-      cout << "You selected 'file decompressing (2)', are you sure (y/n)? ";
+      cout << "You selected 'file decompressing (2)', are you sure? (y/n) ";
         getline(cin, confirmSelection);
     }
     else {
@@ -36,7 +37,8 @@ int main() {
   if (action == "1") {
     cout << "Type name of the file that will be compressed: ";
     getline(cin, fileName);
-    cout << fileName;
+    cout << fileName << endl;
+    compress(fileName);
   }
   else if (action == "2") {
     cout << "Type name of the file that will be decompressed: ";
