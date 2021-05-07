@@ -19,6 +19,21 @@ void allocateCharacters(Character* &characters, int count) {
   return;
 }
 
+void allocateLeafs(Leaf* &leafs, int count) {
+  if (leafs == NULL) {
+    // malloc
+    leafs = (Leaf*) malloc(count * sizeof(Leaf));
+  }
+  else if (leafs != nullptr) {
+    // realloc
+    leafs = (Leaf*) realloc(leafs, count * sizeof(Leaf));
+  }
+  else {
+    return;
+  }
+  return;
+}
+
 void deleteCharacters(Characters* &characters) {
 
 }
@@ -84,15 +99,26 @@ Characters sortCharactersByFrequency(Characters characters) {
   return sortedCharacters;
 }
 
+Leafs buildLeafs(Characters characters) {
+  Leafs leafs;
+  leafs.count = 0;
+  leafs.leaf = NULL;
+}
+
 void compress(string fileName) {
   cout << "Starting to compress the file" << endl;
   fstream file(fileName);
   Characters characters;
+  Leafs leafs;
   characters = sortCharactersByFrequency(readFileToCharacters(file));
-  cout << "Compressing done" << endl;
   // testing here
   for (int i = 0; i < characters.count; i++) {
     cout << characters.character[i].character << " - " << characters.character[i].frequency << endl;
   }
+  //add fileName and characters to file that is compressed (for decompress purposes)
+
+  //
+  leafs = buildLeafs(characters);
+  cout << "Compressing done" << endl;
   return;
 }

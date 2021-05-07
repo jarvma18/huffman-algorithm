@@ -19,4 +19,18 @@ class Characters {
     int count;
 };
 
+class Leaf {
+  public:
+    Leaf* left;
+    Leaf* right;
+    char character;
+    int frequency;
+};
+
+class Leafs {
+  public:
+    Leaf* leaf;
+    int count;
+};
+
 #endif
